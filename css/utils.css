@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+.btn {
+	border-radius: 0.25em;
+    border: solid .01em #d0d0d0;
+    cursor: pointer;
+	padding: .5em;
+	margin: .25em;
+	font-size: 1em;
+}
+
+.control {
+	font-size: 1rem;
+	position: relative;
+	width: 100%;
+    font-family: inherit;
+    border-radius: .25em;
+    border: solid .01em #c0c0c0;
+	padding-inline-start: 0;
+	
+    padding: calc(.5em - 1px) .75em;
+}
+
+select.control {
+    padding: calc(.5em - 2px) .75em;
+}
+
+select.control option {
+    font-family: inherit;
+	font-size: inherit;
+}
