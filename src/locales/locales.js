@@ -12,8 +12,9 @@ window.DT_LOCALES["it"] =
 	GOTO_LAST: "vai all'ultima pagina",
 	ASC_ACTIVE: "ordine crescente attivo",
 	DESC_ACTIVE: "ordine decrescente attivo",
-	NOT_ACTIVE: "non attivo"
-}
+	NOT_ACTIVE: "non attivo",
+	NO_RESULT: "nessun risultato"
+};
 
 window.DT_LOCALES["en"] =
 {
@@ -27,5 +28,6 @@ window.DT_LOCALES["en"] =
 	GOTO_LAST: "go to last page",
 	ASC_ACTIVE: "ascending order active",
 	DESC_ACTIVE: "descending order active",
-	NOT_ACTIVE: "not active"
+	NOT_ACTIVE: "not active",
+	NO_RESULT: "no result"
 }
