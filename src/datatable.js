@@ -366,11 +366,8 @@ class DataTable
 
         ppChoose.onchange = () =>
         {
-            this.perPage = ppChoose.value;
-            this.currPage = 1;
-            this.printData(this.data.slice(0, this.perPage));
-            this.pagination();
-            this.getPgMessage();
+            this.perPage = parseInt(ppChoose.value);
+            this.changePage(1);
         };
 
         leftCol.appendChild(ppChoose);
