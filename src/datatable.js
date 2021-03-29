@@ -120,14 +120,14 @@ class DataTable
             props = [];
 
         this.el.querySelectorAll("thead th").forEach(col => 
-            props.push(col.innerText)
+            props.push(col.innerHTML)
         );
 
         this.el.querySelectorAll("tbody > tr").forEach(row =>
         {
             let item = {};
             row.querySelectorAll("td").forEach((col,i) =>
-                item[props[i]] = col.innerText
+                item[props[i]] = col.innerHTML
             );
             res.push(item);
         });
@@ -149,7 +149,7 @@ class DataTable
 
             Object.keys(o).forEach(k => {
                 let col = document.createElement("td");
-                col.innerText = o[k];
+                col.innerHTML = o[k];
                 row.appendChild(col);
             });
 
@@ -358,10 +358,13 @@ class DataTable
         let ppChoose = document.createElement("select");
         ppChoose.classList.add(`${DT_PREFIX}__select`);
 
+        let ppStr = document.createElement("span");
+        ppStr.innerHTML = this.locale.PER_PAGE;
+
         for(let i = 1; i <= 5; i++)
             ppChoose.innerHTML +=
-                `<option ${i==1?'selected':''} value='${i*10}'>
-                    ${this.locale.PER_PAGE.replace("{NUM}", i*10)}
+                `<option ${i == 1 ? 'selected' : ''} value='${i * 10}'>
+                    ${i * 10}
                 </option>`;
 
         ppChoose.onchange = () =>
@@ -371,6 +374,8 @@ class DataTable
         };
 
         leftCol.appendChild(ppChoose);
+        leftCol.appendChild(ppStr);
+        
         panel.appendChild(leftCol);
 
         if(this.hasSearch)

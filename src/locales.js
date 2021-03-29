@@ -3,7 +3,7 @@ window.DT_LOCALES = {};
 window.DT_LOCALES["it"] =
 {
 	SEARCH: "cerca",
-	PER_PAGE: "{NUM} per pagina",
+	PER_PAGE: "righe per pagina",
 	SHOWING_TO: "righe da {FROM} a {TO} di {SIZE}",
 	GOTO_FIRST: "vai a pagina 1",
 	GOTO_PREV: "vai a pagina precedente",
@@ -19,7 +19,7 @@ window.DT_LOCALES["it"] =
 window.DT_LOCALES["en"] =
 {
 	SEARCH: "search",
-	PER_PAGE: "{NUM} per page",
+	PER_PAGE: "rows per page",
 	SHOWING_TO: "rows {FROM} to {TO} of {SIZE}",
 	GOTO_FIRST: "go to page 1",
 	GOTO_PREV: "go to previous page",

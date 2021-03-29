@@ -21,11 +21,18 @@
 }
 
 .jtable > .jtable__panel > div:first-child {
-	width: 25%;
+    width: 10%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.jtable > .jtable__panel > div:first-child > span {
+    width: 75%;
+    margin-left: .5rem;
 }
 
 .jtable > .jtable__panel > div:last-child {
-	width: 50%;
+    width: 50%;
 	margin-left: auto;
 	align-items: flex-end;
 }
