@@ -65,6 +65,12 @@ class DataTable
         this.data = [];
 
         /**
+         * Array containing filtered data
+         * @type {object[]}
+         */
+        this.filtered = [];
+
+        /**
          * Current page number
          * @type {number}
          */
@@ -107,7 +113,7 @@ class DataTable
             this.locale.SHOWING_TO
                 .replace("{FROM}", start)
                 .replace("{TO}", end)
-                .replace("{SIZE}", this.data.length);
+                .replace("{SIZE}", this.filtered.length);
     }
 
     /**
@@ -165,7 +171,7 @@ class DataTable
     {
         let start = this.perPage * (page - 1);
         let end = start + this.perPage;
-        let sliced = this.data.slice(start, end);
+        let sliced = this.filtered.slice(start, end);
 
         this.currPage = page;
         this.printData(sliced);
@@ -180,7 +186,7 @@ class DataTable
     search(key) 
     {
         key = key.toLowerCase().trim();
-        let filtered = this.data.filter(d =>
+        this.filtered = this.data.filter(d =>
         {
             let cond = false;
             for(let k in d)
@@ -190,7 +196,7 @@ class DataTable
 
         this.currPage = 1;
 
-        if(filtered.length == 0)
+        if(this.filtered.length == 0)
         {
             let props = Object.keys(this.data[0]),
                 noresRow = document.createElement("tr"),
@@ -207,7 +213,7 @@ class DataTable
         }
 
         else
-            this.printData(filtered.slice(0, this.perPage));
+            this.printData(this.filtered.slice(0, this.perPage));
 
         this.pagination();
         this.getPgMessage();
@@ -221,7 +227,7 @@ class DataTable
         let list = document.createElement("div");
         list.classList.add(`${DT_PREFIX}__pagination`);
 
-        let totPages = Math.ceil(this.data.length / this.perPage);
+        let totPages = Math.ceil(this.filtered.length / this.perPage);
 
         if(this.currPage > 1)
         {
@@ -295,8 +301,8 @@ class DataTable
     changeOrder(prop, way)
     {
         let start = this.perPage * (this.currPage - 1),
-            end = this.data.length > this.perPage ? start + this.perPage : this.data.length,
-            sorted = this.data.sort((a,b) => a[prop] > b[prop] ? way : -way);
+            end = this.filtered.length > this.perPage ? start + this.perPage : this.filtered.length,
+            sorted = this.filtered.sort((a,b) => a[prop] > b[prop] ? way : -way);
 
         this.printData(sorted.slice(start, end));
     }
@@ -337,13 +343,14 @@ class DataTable
     init()
     {
         this.data = this.getData();
+        this.filtered = this.data;
         this.hasSearch = this.el.dataset.search;
         this.locale = DT_LOCALES[this.el.dataset.locale];
 
         this.checkId();
 
         // limitating elements to page
-        this.printData(this.data.slice(0, this.perPage));
+        this.printData(this.filtered.slice(0, this.perPage));
 
         // creating container
         let cont = document.createElement("div");
